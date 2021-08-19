@@ -1,51 +1,47 @@
 package com.example.demo.model;
 
+import java.io.Serializable;
 import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import com.fasterxml.jackson.annotation.JsonRootName;
 
-/**
- * @author Rafa Yébenes
- *
- */
+public class Usuario implements Serializable {
 
-public class Usuario {
+	private static final long serialVersionUID = 1L;
 
-	private int id;
-	private String nombre;
-	private String apellido1;
-	private String mail;
-	private String contraseña;
+	public int idusuarios;
 
+	public String nombre;
 
-	@Temporal(TemporalType.DATE)
-	private Date fechaAlta;
-	
+	public String apellido;
+
+	public String mail;
+
+	public String contrasenia;
+
+	public Date fechaalta;
 
 	public Usuario() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Usuario(int id, String nombre, String apellido1, String mail, String contraseña, Date fechaAlta) {
+	public Usuario(int idusuarios, String nombre, String apellido, String mail, String contrasenia, Date fechaalta) {
 		super();
-		this.id = id;
+		this.idusuarios = idusuarios;
 		this.nombre = nombre;
-		this.apellido1 = apellido1;
+		this.apellido = apellido;
 		this.mail = mail;
-		this.contraseña = contraseña;
-		this.fechaAlta = fechaAlta;
+		this.contrasenia = contrasenia;
+		this.fechaalta = fechaalta;
 	}
 
-	public int getId() {
-		return id;
+	public int getIdusuarios() {
+		return idusuarios;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setIdusuarios(int idusuarios) {
+		this.idusuarios = idusuarios;
 	}
 
 	public String getNombre() {
@@ -56,12 +52,12 @@ public class Usuario {
 		this.nombre = nombre;
 	}
 
-	public String getApellido1() {
-		return apellido1;
+	public String getApellido() {
+		return apellido;
 	}
 
-	public void setApellido1(String apellido1) {
-		this.apellido1 = apellido1;
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
 	}
 
 	public String getMail() {
@@ -72,43 +68,45 @@ public class Usuario {
 		this.mail = mail;
 	}
 
-	public String getContraseña() {
-		return contraseña;
+	public String getContrasenia() {
+		return contrasenia;
 	}
 
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setContrasenia(String contrasenia) {
+		this.contrasenia = contrasenia;
 	}
 
-	public Date getFechaAlta() {
-		return fechaAlta;
+	public Date getFechaalta() {
+		return fechaalta;
 	}
 
-	public void setFechaAlta(Date fechaAlta) {
-		this.fechaAlta = fechaAlta;
+	public void setFechaalta(Date fechaalta) {
+		this.fechaalta = fechaalta;
 	}
 
-	public void setFechaAlta(String fechaAlta) {
-		try {
-		    this.fechaAlta = new Date(new SimpleDateFormat("dd/MM/yyyy").parse(fechaAlta).getTime());		
-		    System.out.println(this.fechaAlta);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
+	@Override
+	public String toString() {
+		return "UsuarioDTO [idusuarios=" + idusuarios + ", nombre=" + nombre + ", apellido=" + apellido + ", mail="
+				+ mail + ", contrasenia=" + contrasenia + ", fechaalta=" + fechaalta + "]";
+	}
+
+	
 	public boolean isEmpty() {
 
 		int cont = 0;
-		if (this.id == 0)
+		if (this.idusuarios == 0)
 			cont++;
 		if (this.nombre == null && "".equals(this.nombre))
 			cont++;
-		if (this.apellido1 == null && "".equals(this.apellido1))
+		if (this.apellido == null && "".equals(this.apellido))
 			cont++;
 		if (this.mail == null && "".equals(this.mail))
 			cont++;
-		if (this.contraseña == null && "".equals(this.contraseña))
+		if (this.contrasenia == null && "".equals(this.contrasenia))
 			cont++;
 
 		if (cont == 0) {
@@ -117,11 +115,5 @@ public class Usuario {
 			return true;
 		}
 	}
-
-	@Override
-	public String toString() {
-		return "Usuario [id=" + id + ", nombre=" + nombre + ", apellido1=" + apellido1 + ", mail=" + mail
-				+ ", contraseña=" + contraseña + ", fechaAlta=" + fechaAlta + "]";
-	}
-
+	
 }

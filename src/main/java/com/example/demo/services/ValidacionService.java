@@ -19,7 +19,7 @@ public class ValidacionService implements IValidacionService {
 		if(u == null) return 1;
 		if(u.isEmpty()) return 2;
 		if(!u.getMail().contains("@")) return 3;
-		if(u.getFechaAlta().after(new Date())) return 4;
+		if(u.getFechaalta().after(new Date())) return 4;
 		
 		return 0;
 	}
