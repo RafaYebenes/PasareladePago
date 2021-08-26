@@ -29,7 +29,7 @@ public class ValidacionService implements IValidacionService {
 		
 		if(e == null) return 1;
 		if(e.isEmpty()) return 2;
-		if(e.getFechaEvento().before(new Date()) ) return 3;
+		if(e.getFechaEvento() != null || e.getFechaEvento().before(new Date()) ) return 3;
 		return 0;
 	}
 

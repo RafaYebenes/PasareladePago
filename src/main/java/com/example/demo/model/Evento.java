@@ -4,9 +4,6 @@ import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
 
 public class Evento {
 
@@ -15,7 +12,6 @@ public class Evento {
 	private String descripcioCorta;
 	private String descripciónExtendida; 
 	private String foto;
-	@Temporal(TemporalType.DATE)
 	private Date fechaEvento; 
 	private int horaEvento;
 
@@ -114,11 +110,11 @@ public class Evento {
 		
 		int cont = 0;
 		if( this.id == 0 ) cont++;
-		if( this.nombre == null && "".equals(this.nombre) ) cont++;
-		if( this.descripcioCorta == null && "".equals(this.descripcioCorta)) cont++;
-		if( this.descripciónExtendida == null && "".equals(this.descripciónExtendida)) cont++;
-		if( this.fechaEvento == null && "".equals(this.fechaEvento)) cont++;
-		if( this.horaEvento < 0 && this.horaEvento > 24) cont++;
+		if( this.nombre == null || "".equals(this.nombre) ) cont++;
+		if( this.descripcioCorta == null || "".equals(this.descripcioCorta)) cont++;
+		if( this.descripciónExtendida == null || "".equals(this.descripciónExtendida)) cont++;
+		if( this.fechaEvento == null || "".equals(this.fechaEvento)) cont++;
+		if( this.horaEvento < 0 || this.horaEvento > 24) cont++;
 		
 		if(cont == 0) {
 			return false;
